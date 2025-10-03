@@ -1,5 +1,5 @@
 
-
+//QN1
 async function mergeAuthorCommentData() {
 
     const authorRes = await fetch('https://api.example.com/authors');
@@ -39,6 +39,15 @@ articleId,
 
 mergeAuthorCommentData();
       
+//Qn2
+async function getAvailableProducts() {
+  try {
+    // 1. Define the endpoints
+    const endpoints = [
+      "https://dummyjson.com/products/1", // Example endpoint
+      "https://dummyjson.com/products/2",
+      "https://dummyjson.com/products/3"
+    ];
           
 
 
