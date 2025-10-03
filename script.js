@@ -49,8 +49,12 @@ async function getAvailableProducts() {
     ];
     const responses = await Promise.all(endpoints.map(url => fetch(url)));
     const productData = await Promise.all(responses.map(res => res.json()));
+const products = Array.isArray(productData[0]) 
+      ? productData.flat() 
+      : productData; 
 
-  }
-
-
+  }catch (error) {
+    console.error('Error fetching product data:', error);
+    return [];
+  } 
   
