@@ -6,7 +6,7 @@ async function mergeAuthorCommentData() {
     if (!authorRes.ok) throw new Error('Failed to fetch authors');
     const authors = await authorRes.json(); 
 
-     onst structuredData = await Promise.all(
+     const structuredData = await Promise.all(
       authors.map(async (author) => {
 
         const articlesWithComments = await Promise.all(
@@ -16,8 +16,30 @@ async function mergeAuthorCommentData() {
             const comments = await commentRes.json();
 
             return {
+articleId,
+              comments,  
+            };
+          })
+        );
+        return {
+          id: author.id,
+          name: author.name,
+          articles: articlesWithComments,
+        };
+      })
+    );
 
-      }
+    console.log(structuredData);
+    return structuredData;
 
-}
+  } catch (error) {
+    console.error('Error merging author and comment data:', error);
+  }
+
+
+mergeAuthorCommentData();
+      
+          
+
+
   
