@@ -42,13 +42,15 @@ mergeAuthorCommentData();
 //Qn2
 async function getAvailableProducts() {
   try {
-    // 1. Define the endpoints
     const endpoints = [
-      "https://dummyjson.com/products/1", // Example endpoint
+      "https://dummyjson.com/products/1", 
       "https://dummyjson.com/products/2",
       "https://dummyjson.com/products/3"
     ];
-          
+    const responses = await Promise.all(endpoints.map(url => fetch(url)));
+    const productData = await Promise.all(responses.map(res => res.json()));
+
+  }
 
 
   
